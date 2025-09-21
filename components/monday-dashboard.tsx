@@ -393,7 +393,6 @@ export function MondayDashboard() {
                     </div>
                     <div>Detaille Commande</div>
                     <div>OPERATEUR</div>
-                    <div>Status</div>
                     <div>Statut</div>
                     <div>Date Design</div>
                     <div>Sortie</div>
@@ -402,7 +401,6 @@ export function MondayDashboard() {
                     <div>PRIX</div>
                     <div>AVANCE</div>
                     <div>N recue</div>
-                    <div>N RECUE NOUVEAU</div>
                     <div>Phone</div>
                     <div>Last Updated</div>
                     <div>
