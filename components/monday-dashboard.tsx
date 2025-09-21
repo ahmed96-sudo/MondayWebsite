@@ -369,44 +369,45 @@ export function MondayDashboard() {
         {/* Table Content */}
         <div className="flex-1 overflow-auto">
           <div className="min-w-full">
-            {/* Table Headers */}
-            <div className="bg-gray-50 border-b border-gray-200 px-6 py-3">
-              <div className="grid grid-cols-12 gap-4 text-xs font-medium text-gray-500 tracking-wider border-collapse">
-                <div className="flex items-center">
-                  <Checkbox/>
-                </div>
-                <div className="col-span-2 flex items-center gap-2">
-                  {/* <Checkbox /> */}
-                  Element
-                </div>
-                <div>Detaille Commande</div>
-                <div>OPERATEUR</div>
-                <div>Status</div>
-                <div>Statut</div>
-                <div>Date Design</div>
-                <div>Sortie</div>
-                <div>Payement</div>
-                <div>Date de livraison</div>
-                <div>PRIX</div>
-                <div>AVANCE</div>
-                <div>N recue</div>
-                <div>N RECUE NOUVEAU</div>
-                <div>Phone</div>
-                <div>Last Updated</div>
-                <div>
-                  <Plus className="w-4 h-4 text-gray-400" />
-                </div>
-              </div>
-            </div>
 
             {/* Task Groups */}
             {tasks.map((group) => (
+
               <div key={group.id} className="border-b border-gray-200">
                 {/* Group Header */}
                 <div className={`border-l-4 ${getGroupHeaderColor(group.color)} bg-gray-50 px-6 py-3`}>
                   <div className="flex items-center gap-2">
                     <ChevronDown className="w-4 h-4 text-gray-600" />
                     <span className="font-medium text-gray-900">{group.name}</span>
+                  </div>
+                </div>
+                {/* Table Headers */}
+                <div className="bg-gray-50 border-b border-gray-200 px-6 py-3">
+                  <div className="grid grid-cols-12 gap-4 text-xs font-medium text-gray-500 tracking-wider border-collapse grid-flow-col">
+                    <div className="flex items-center">
+                      <Checkbox/>
+                    </div>
+                    <div className="col-span-2 flex items-center gap-2">
+                      {/* <Checkbox /> */}
+                      Element
+                    </div>
+                    <div>Detaille Commande</div>
+                    <div>OPERATEUR</div>
+                    <div>Status</div>
+                    <div>Statut</div>
+                    <div>Date Design</div>
+                    <div>Sortie</div>
+                    <div>Payement</div>
+                    <div>Date de livraison</div>
+                    <div>PRIX</div>
+                    <div>AVANCE</div>
+                    <div>N recue</div>
+                    <div>N RECUE NOUVEAU</div>
+                    <div>Phone</div>
+                    <div>Last Updated</div>
+                    <div>
+                      <Plus className="w-4 h-4 text-gray-400" />
+                    </div>
                   </div>
                 </div>
 
