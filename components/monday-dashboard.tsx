@@ -191,7 +191,7 @@ export function MondayDashboard() {
   return (
     <div className="flex h-screen bg-gray-50">
       {/* Top notification bar */}
-      <div className="fixed top-0 left-0 right-0 bg-gray-800 text-white px-4 py-2 text-sm flex items-center justify-between z-50">
+      {/* <div className="fixed top-0 left-0 right-0 bg-gray-800 text-white px-4 py-2 text-sm flex items-center justify-between z-50">
         <span>Enable desktop notifications on this computer</span>
         <div className="flex items-center gap-2">
           <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
@@ -199,79 +199,49 @@ export function MondayDashboard() {
           </Button>
           <button className="text-gray-300 hover:text-white">×</button>
         </div>
-      </div>
+      </div> */}
 
       {/* Sidebar */}
-      <div className="w-64 bg-white border-r border-gray-200 flex flex-col mt-10">
+      <div className="w-64 bg-white border-r border-gray-200 flex flex-col">
         {/* Logo */}
         <div className="p-4 border-b border-gray-200">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
-              <Grid3X3 className="w-4 h-4 text-white" />
-            </div>
-            <span className="font-semibold text-gray-900">monday</span>
-            <span className="text-sm text-gray-500">work management</span>
-            <Button size="sm" variant="outline" className="ml-auto text-xs bg-transparent">
-              See plans
-            </Button>
+            <span className="text-sm text-gray-500">Monday</span>
           </div>
         </div>
 
         {/* Navigation */}
         <div className="flex-1 p-4">
-          <nav className="space-y-1">
-            <a href="#" className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">
-              <Home className="w-4 h-4" />
-              <span>Home</span>
-            </a>
-            <a href="#" className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">
-              <Briefcase className="w-4 h-4" />
-              <span>My work</span>
-            </a>
-            <a href="#" className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">
-              <MoreHorizontal className="w-4 h-4" />
-              <span>More</span>
-            </a>
-          </nav>
-
-          <div className="mt-8">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Favorites</span>
-              <ChevronDown className="w-3 h-3 text-gray-400" />
-            </div>
-          </div>
 
           <div className="mt-6">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Workspaces</span>
+              <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">Items</span>
               <div className="flex items-center gap-1">
-                <MoreHorizontal className="w-3 h-3 text-gray-400" />
-                <Plus className="w-3 h-3 text-gray-400" />
+                <Plus className="w-4 h-4 text-gray-400" />
               </div>
             </div>
             <div className="space-y-1">
-              <div className="flex items-center gap-2 px-2 py-1 bg-blue-50 rounded">
-                <div className="w-6 h-6 bg-purple-600 rounded flex items-center justify-center text-xs text-white font-medium">
-                  E
+              <div className="space-y-1">
+                <div className="flex flex-row justify-between items-center">
+                  <a
+                    href="#"
+                    className="flex items-center gap-2 px-2 py-1 text-sm text-blue-600 bg-blue-50 rounded font-medium"
+                  >
+                    <div className="w-3 h-3 bg-blue-500 rounded-sm"></div>
+                    <span>tst</span>
+                  </a>
+                  <MoreHorizontal className="w-4 h-4 text-gray-400" />
                 </div>
-                <span className="text-sm text-gray-900">Espace de tra...</span>
-                <ChevronDown className="w-3 h-3 text-gray-400 ml-auto" />
-              </div>
-              <div className="ml-8 space-y-1">
-                <a
-                  href="#"
-                  className="flex items-center gap-2 px-2 py-1 text-sm text-blue-600 bg-blue-50 rounded font-medium"
-                >
-                  <div className="w-3 h-3 bg-blue-500 rounded-sm"></div>
-                  <span>tst</span>
-                </a>
-                <a
-                  href="#"
-                  className="flex items-center gap-2 px-2 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded"
-                >
-                  <div className="w-3 h-3 bg-green-500 rounded-sm"></div>
-                  <span>Tableau de bord et reporting</span>
-                </a>
+                <div className="flex flex-row justify-between items-center">
+                  <a
+                    href="#"
+                    className="flex items-center gap-2 px-2 py-1 text-sm text-gray-700 hover:bg-gray-100 rounded"
+                  >
+                    <div className="w-3 h-3 bg-green-500 rounded-sm"></div>
+                    <span>Tableau de bord et reporting</span>
+                  </a>
+                  <MoreHorizontal className="w-4 h-4 text-gray-400" />
+                </div>
               </div>
             </div>
           </div>
@@ -279,17 +249,17 @@ export function MondayDashboard() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col mt-10">
+      <div className="flex-1 flex flex-col">
         {/* Top Header */}
         <div className="bg-white border-b border-gray-200 px-6 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <h1 className="text-2xl font-semibold text-gray-900">tst</h1>
-              <ChevronDown className="w-4 h-4 text-gray-400" />
+              {/* <ChevronDown className="w-4 h-4 text-gray-400" /> */}
             </div>
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2">
-                <Bell className="w-5 h-5 text-gray-400" />
+                {/* <Bell className="w-5 h-5 text-gray-400" />
                 <div className="relative">
                   <Bell className="w-5 h-5 text-gray-400" />
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full flex items-center justify-center">
@@ -303,9 +273,9 @@ export function MondayDashboard() {
                 <Search className="w-5 h-5 text-gray-400" />
                 <HelpCircle className="w-5 h-5 text-gray-400" />
                 <Share2 className="w-5 h-5 text-gray-400" />
-                <Grid3X3 className="w-5 h-5 text-gray-400" />
+                <Grid3X3 className="w-5 h-5 text-gray-400" /> */}
               </div>
-              <Button variant="outline" size="sm" className="text-blue-600 border-blue-600 bg-transparent">
+              {/* <Button variant="outline" size="sm" className="text-blue-600 border-blue-600 bg-transparent">
                 <Target className="w-4 h-4 mr-1" />
                 Sidekick
               </Button>
@@ -327,21 +297,33 @@ export function MondayDashboard() {
               </div>
               <Button variant="outline" size="sm">
                 Invite / 2
+              </Button> */}
+              <Button variant="outline" size="sm">
+                <Bell className="w-4 h-4 mr-1" />
+                History
               </Button>
-              <MoreHorizontal className="w-4 h-4 text-gray-400" />
+              <div className="flex items-center gap-1">
+                <Avatar className="w-6 h-6">
+                  <AvatarFallback className="bg-red-500 text-white text-xs">AS</AvatarFallback>
+                </Avatar>
+                {/* <Avatar className="w-6 h-6">
+                  <AvatarFallback className="bg-blue-500 text-white text-xs">AN</AvatarFallback>
+                </Avatar> */}
+              </div>
+              <MoreHorizontal className="w-5 h-5 text-gray-400" />
             </div>
           </div>
         </div>
 
         {/* Table Header */}
         <div className="bg-white border-b border-gray-200 px-6 py-4">
-          <div className="flex items-center justify-between mb-4">
+          {/* <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium text-gray-900">Main table</span>
               <MoreHorizontal className="w-4 h-4 text-gray-400" />
               <Plus className="w-4 h-4 text-gray-400" />
             </div>
-          </div>
+          </div> */}
 
           <div className="flex items-center gap-4">
             <Button className="bg-blue-600 hover:bg-blue-700 text-white">
@@ -349,7 +331,7 @@ export function MondayDashboard() {
               <ChevronDown className="w-4 h-4 ml-1" />
             </Button>
             <div className="flex items-center gap-2">
-              <div className="relative">
+              {/* <div className="relative">
                 <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <Input
                   placeholder="Search"
@@ -361,13 +343,13 @@ export function MondayDashboard() {
               <Button variant="outline" size="sm">
                 <User className="w-4 h-4 mr-1" />
                 Person
-              </Button>
+              </Button> */}
               <Button variant="outline" size="sm">
                 <Filter className="w-4 h-4 mr-1" />
                 Filter
                 <ChevronDown className="w-4 h-4 ml-1" />
               </Button>
-              <Button variant="outline" size="sm">
+              {/* <Button variant="outline" size="sm">
                 <ArrowUpDown className="w-4 h-4 mr-1" />
                 Sort
               </Button>
@@ -379,7 +361,7 @@ export function MondayDashboard() {
                 <Users className="w-4 h-4 mr-1" />
                 Group by
               </Button>
-              <MoreHorizontal className="w-4 h-4 text-gray-400" />
+              <MoreHorizontal className="w-4 h-4 text-gray-400" /> */}
             </div>
           </div>
         </div>
@@ -389,20 +371,31 @@ export function MondayDashboard() {
           <div className="min-w-full">
             {/* Table Headers */}
             <div className="bg-gray-50 border-b border-gray-200 px-6 py-3">
-              <div className="grid grid-cols-12 gap-4 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                <div className="col-span-2 flex items-center gap-2">
-                  <Checkbox />
-                  Task
+              <div className="grid grid-cols-12 gap-4 text-xs font-medium text-gray-500 tracking-wider border-collapse">
+                <div className="flex items-center">
+                  <Checkbox/>
                 </div>
-                <div>Admin</div>
+                <div className="col-span-2 flex items-center gap-2">
+                  {/* <Checkbox /> */}
+                  Element
+                </div>
+                <div>Detaille Commande</div>
+                <div>OPERATEUR</div>
+                <div>Status</div>
                 <div>Statut</div>
-                <div>Échéance</div>
-                <div>Date</div>
-                <div>Date 1</div>
-                <div>descr</div>
-                <div>Date 2</div>
-                <div>Menu déroulant</div>
-                <div>Statut 1</div>
+                <div>Date Design</div>
+                <div>Sortie</div>
+                <div>Payement</div>
+                <div>Date de livraison</div>
+                <div>PRIX</div>
+                <div>AVANCE</div>
+                <div>N recue</div>
+                <div>N RECUE NOUVEAU</div>
+                <div>Phone</div>
+                <div>Last Updated</div>
+                <div>
+                  <Plus className="w-4 h-4 text-gray-400" />
+                </div>
               </div>
             </div>
 
@@ -473,9 +466,9 @@ export function MondayDashboard() {
         </div>
 
         {/* Help Button */}
-        <div className="fixed bottom-6 right-6">
+        {/* <div className="fixed bottom-6 right-6">
           <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-12 h-12 p-0">Help</Button>
-        </div>
+        </div> */}
       </div>
     </div>
   )
