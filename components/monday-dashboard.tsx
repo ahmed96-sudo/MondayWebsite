@@ -561,8 +561,32 @@ export function MondayDashboard() {
       <Popup isVisible={isPopupVisible} onClose={() => setIsPopupVisible(false)}>
         {/* Content for the popup */}
         <h2 className="mb-4 text-2xl font-bold text-white">Activity History</h2>
-        <div>
-          <div className="flex flex-row justify-evenly text-white">
+        <div className="flex flex-col justify-center">
+          <div className="flex flex-row justify-evenly text-white mb-2">
+            <div className="flex flex-row ">
+              <Clock className="mr-2" />
+              <span>2d</span>
+            </div>
+            <div>
+              Date1
+            </div>
+            <div>
+              Ahmed Saeed
+            </div>
+          </div>
+          <div className="flex flex-row justify-evenly text-white mb-2">
+            <div className="flex flex-row ">
+              <Clock className="mr-2" />
+              <span>2d</span>
+            </div>
+            <div>
+              Date1
+            </div>
+            <div>
+              Ahmed Saeed
+            </div>
+          </div>
+          <div className="flex flex-row justify-evenly text-white mb-2">
             <div className="flex flex-row ">
               <Clock className="mr-2" />
               <span>2d</span>
