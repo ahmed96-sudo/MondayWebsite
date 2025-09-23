@@ -190,6 +190,7 @@ export function MondayDashboard() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   // const [searchQuery, setSearchQuery] = useState("")
   const [tablesopen, setTablesopen] = useState([true, true, true]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [tasks, setTasks] = useState(mockData)
 
   const handleTaskCheck = (groupId: string, taskId: string) => {
@@ -236,6 +237,11 @@ export function MondayDashboard() {
         return "border-l-gray-400"
     }
   }
+
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
 
   return (
     <div className="flex h-screen bg-gray-50">
@@ -374,7 +380,7 @@ export function MondayDashboard() {
             </div>
           </div> */}
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 relative">
             {/* <Dropdown>
               <DropdownTrigger>
                 <Button variant="bordered" className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
@@ -391,10 +397,28 @@ export function MondayDashboard() {
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown> */}
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+            <Button onClick={handleDropdownToggle} className="bg-blue-600 hover:bg-blue-700 text-white">
               New task
-              <ChevronDown className="w-4 h-4 ml-1" />
+              <ChevronDown className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
             </Button>
+            {isDropdownOpen && (
+              <div className="absolute left-0 top-10 w-[115px] rounded-md bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5">
+                <div className="py-1">
+                  <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >
+                    New task
+                  </a>
+                  <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >
+                    New Table
+                  </a>
+                </div>
+              </div>
+            )}
             <div className="flex items-center gap-2">
               {/* <div className="relative">
                 <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
