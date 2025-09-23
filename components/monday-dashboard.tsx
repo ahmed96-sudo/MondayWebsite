@@ -1,7 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@heroui/react";
+
+import { Button1 } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -28,6 +30,7 @@ import {
   MessageSquare,
   Zap,
   Share2,
+  Clock
 } from "lucide-react"
 
 interface Task {
@@ -51,6 +54,49 @@ interface TaskGroup {
   color: "yellow" | "blue" | "green"
   tasks: Task[]
 }
+
+interface PopupProps {
+  isVisible: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+}
+
+const Popup = ({ isVisible, onClose, children }: PopupProps) => {
+  if (!isVisible) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-70 backdrop-blur-sm transition-opacity duration-300 ease-in-out"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-md rounded-lg bg-gray-800 p-8 shadow-2xl transition-transform duration-300 ease-in-out transform scale-100 opacity-100"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute right-3 top-3 rounded-full bg-gray-700 p-1 text-gray-400 transition-colors hover:bg-gray-600 hover:text-white cursor-pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M18 6L6 18" />
+            <path d="M6 6L18 18" />
+          </svg>
+        </button>
+        {children}
+      </div>
+    </div>
+  );
+};
+
 
 const mockData: TaskGroup[] = [
   {
@@ -139,8 +185,11 @@ const mockData: TaskGroup[] = [
   },
 ]
 
+
 export function MondayDashboard() {
-  const [searchQuery, setSearchQuery] = useState("")
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+  // const [searchQuery, setSearchQuery] = useState("")
+  const [tablesopen, setTablesopen] = useState([true, true, true]);
   const [tasks, setTasks] = useState(mockData)
 
   const handleTaskCheck = (groupId: string, taskId: string) => {
@@ -194,9 +243,9 @@ export function MondayDashboard() {
       {/* <div className="fixed top-0 left-0 right-0 bg-gray-800 text-white px-4 py-2 text-sm flex items-center justify-between z-50">
         <span>Enable desktop notifications on this computer</span>
         <div className="flex items-center gap-2">
-          <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+          <Button1 size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
             Enable now
-          </Button>
+          </Button1>
           <button className="text-gray-300 hover:text-white">×</button>
         </div>
       </div> */}
@@ -275,18 +324,18 @@ export function MondayDashboard() {
                 <Share2 className="w-5 h-5 text-gray-400" />
                 <Grid3X3 className="w-5 h-5 text-gray-400" /> */}
               </div>
-              {/* <Button variant="outline" size="sm" className="text-blue-600 border-blue-600 bg-transparent">
+              {/* <Button1 variant="outline" size="sm" className="text-blue-600 border-blue-600 bg-transparent">
                 <Target className="w-4 h-4 mr-1" />
                 Sidekick
-              </Button>
-              <Button variant="outline" size="sm">
+              </Button1>
+              <Button1 variant="outline" size="sm">
                 <BarChart3 className="w-4 h-4 mr-1" />
                 Integrate
-              </Button>
-              <Button variant="outline" size="sm">
+              </Button1>
+              <Button1 variant="outline" size="sm">
                 <Settings className="w-4 h-4 mr-1" />
                 Automate
-              </Button>
+              </Button1>
               <div className="flex items-center gap-1">
                 <Avatar className="w-6 h-6">
                   <AvatarFallback className="bg-red-500 text-white text-xs">AS</AvatarFallback>
@@ -295,14 +344,14 @@ export function MondayDashboard() {
                   <AvatarFallback className="bg-blue-500 text-white text-xs">AN</AvatarFallback>
                 </Avatar>
               </div>
-              <Button variant="outline" size="sm">
+              <Button1 variant="outline" size="sm">
                 Invite / 2
-              </Button> */}
-              <Button variant="outline" size="sm">
+              </Button1> */}
+              <Button1 variant="outline" size="sm" onClick={() => setIsPopupVisible(true)}>
                 <Bell className="w-4 h-4 mr-1" />
                 History
-              </Button>
-              <div className="flex items-center gap-1">
+              </Button1>
+              <div className="flex items-center gap-1 cursor-pointer">
                 <Avatar className="w-6 h-6">
                   <AvatarFallback className="bg-red-500 text-white text-xs">AS</AvatarFallback>
                 </Avatar>
@@ -310,7 +359,7 @@ export function MondayDashboard() {
                   <AvatarFallback className="bg-blue-500 text-white text-xs">AN</AvatarFallback>
                 </Avatar> */}
               </div>
-              <MoreHorizontal className="w-5 h-5 text-gray-400" />
+              <MoreHorizontal className="w-5 h-5 text-gray-400 cursor-pointer" />
             </div>
           </div>
         </div>
@@ -326,10 +375,26 @@ export function MondayDashboard() {
           </div> */}
 
           <div className="flex items-center gap-4">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+            <Dropdown>
+              <DropdownTrigger>
+                <Button variant="bordered" className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
+                  New task
+                  <ChevronDown className="w-4 h-4 ml-1" />
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Static Actions" className="bg-white border-2 shadow-2xl rounded-lg w-[130px]">
+                <DropdownItem key="new">New file</DropdownItem>
+                <DropdownItem key="copy">Copy link</DropdownItem>
+                <DropdownItem key="edit">Edit file</DropdownItem>
+                <DropdownItem key="delete" className="text-danger" color="danger">
+                  Delete file
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+            {/* <Button1 className="bg-blue-600 hover:bg-blue-700 text-white">
               New task
               <ChevronDown className="w-4 h-4 ml-1" />
-            </Button>
+            </Button1> */}
             <div className="flex items-center gap-2">
               {/* <div className="relative">
                 <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -340,27 +405,27 @@ export function MondayDashboard() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
-              <Button variant="outline" size="sm">
+              <Button1 variant="outline" size="sm">
                 <User className="w-4 h-4 mr-1" />
                 Person
-              </Button> */}
-              <Button variant="outline" size="sm">
+              </Button1> */}
+              <Button1 variant="outline" size="sm">
                 <Filter className="w-4 h-4 mr-1" />
                 Filter
                 <ChevronDown className="w-4 h-4 ml-1" />
-              </Button>
-              {/* <Button variant="outline" size="sm">
+              </Button1>
+              {/* <Button1 variant="outline" size="sm">
                 <ArrowUpDown className="w-4 h-4 mr-1" />
                 Sort
-              </Button>
-              <Button variant="outline" size="sm">
+              </Button1>
+              <Button1 variant="outline" size="sm">
                 <Eye className="w-4 h-4 mr-1" />
                 Hide
-              </Button>
-              <Button variant="outline" size="sm">
+              </Button1>
+              <Button1 variant="outline" size="sm">
                 <Users className="w-4 h-4 mr-1" />
                 Group by
-              </Button>
+              </Button1>
               <MoreHorizontal className="w-4 h-4 text-gray-400" /> */}
             </div>
           </div>
@@ -466,9 +531,30 @@ export function MondayDashboard() {
 
         {/* Help Button */}
         {/* <div className="fixed bottom-6 right-6">
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-12 h-12 p-0">Help</Button>
+          <Button1 className="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-12 h-12 p-0">Help</Button1>
         </div> */}
       </div>
+      <Popup isVisible={isPopupVisible} onClose={() => setIsPopupVisible(false)}>
+        {/* Content for the popup */}
+        <h2 className="mb-4 text-2xl font-bold text-white">Activity History</h2>
+        <div>
+          <div className="flex flex-row justify-evenly text-white">
+            <div className="flex flex-row ">
+              <Clock className="mr-2" />
+              <span>2d</span>
+            </div>
+            <div>
+              Date1
+            </div>
+            <div>
+              Ahmed Saeed
+            </div>
+          </div>
+          {/* <p className="text-gray-300">
+            This is the content you can pass into the popup component. You can add text, forms, or any other JSX here.
+          </p> */}
+        </div>
+      </Popup>
     </div>
   )
 }
