@@ -568,7 +568,7 @@ export function MondayDashboard() {
               <span>2d</span>
             </div>
             <div>
-              Date1
+              Data
             </div>
             <div>
               Ahmed Saeed
@@ -580,7 +580,7 @@ export function MondayDashboard() {
               <span>2d</span>
             </div>
             <div>
-              Date1
+              Data
             </div>
             <div>
               Ahmed Saeed
@@ -592,7 +592,7 @@ export function MondayDashboard() {
               <span>2d</span>
             </div>
             <div>
-              Date1
+              Data
             </div>
             <div>
               Ahmed Saeed
