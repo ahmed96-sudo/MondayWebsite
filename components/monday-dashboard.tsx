@@ -1,9 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@heroui/react";
+// import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@heroui/react";
 
-import { Button1 } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
@@ -243,9 +243,9 @@ export function MondayDashboard() {
       {/* <div className="fixed top-0 left-0 right-0 bg-gray-800 text-white px-4 py-2 text-sm flex items-center justify-between z-50">
         <span>Enable desktop notifications on this computer</span>
         <div className="flex items-center gap-2">
-          <Button1 size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+          <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
             Enable now
-          </Button1>
+          </Button>
           <button className="text-gray-300 hover:text-white">×</button>
         </div>
       </div> */}
@@ -324,18 +324,18 @@ export function MondayDashboard() {
                 <Share2 className="w-5 h-5 text-gray-400" />
                 <Grid3X3 className="w-5 h-5 text-gray-400" /> */}
               </div>
-              {/* <Button1 variant="outline" size="sm" className="text-blue-600 border-blue-600 bg-transparent">
+              {/* <Button variant="outline" size="sm" className="text-blue-600 border-blue-600 bg-transparent">
                 <Target className="w-4 h-4 mr-1" />
                 Sidekick
-              </Button1>
-              <Button1 variant="outline" size="sm">
+              </Button>
+              <Button variant="outline" size="sm">
                 <BarChart3 className="w-4 h-4 mr-1" />
                 Integrate
-              </Button1>
-              <Button1 variant="outline" size="sm">
+              </Button>
+              <Button variant="outline" size="sm">
                 <Settings className="w-4 h-4 mr-1" />
                 Automate
-              </Button1>
+              </Button>
               <div className="flex items-center gap-1">
                 <Avatar className="w-6 h-6">
                   <AvatarFallback className="bg-red-500 text-white text-xs">AS</AvatarFallback>
@@ -344,13 +344,13 @@ export function MondayDashboard() {
                   <AvatarFallback className="bg-blue-500 text-white text-xs">AN</AvatarFallback>
                 </Avatar>
               </div>
-              <Button1 variant="outline" size="sm">
+              <Button variant="outline" size="sm">
                 Invite / 2
-              </Button1> */}
-              <Button1 variant="outline" size="sm" onClick={() => setIsPopupVisible(true)}>
+              </Button> */}
+              <Button variant="outline" size="sm" onClick={() => setIsPopupVisible(true)}>
                 <Bell className="w-4 h-4 mr-1" />
                 History
-              </Button1>
+              </Button>
               <div className="flex items-center gap-1 cursor-pointer">
                 <Avatar className="w-6 h-6">
                   <AvatarFallback className="bg-red-500 text-white text-xs">AS</AvatarFallback>
@@ -375,7 +375,7 @@ export function MondayDashboard() {
           </div> */}
 
           <div className="flex items-center gap-4">
-            <Dropdown>
+            {/* <Dropdown>
               <DropdownTrigger>
                 <Button variant="bordered" className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
                   New task
@@ -390,11 +390,11 @@ export function MondayDashboard() {
                   Delete file
                 </DropdownItem>
               </DropdownMenu>
-            </Dropdown>
-            {/* <Button1 className="bg-blue-600 hover:bg-blue-700 text-white">
+            </Dropdown> */}
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
               New task
               <ChevronDown className="w-4 h-4 ml-1" />
-            </Button1> */}
+            </Button>
             <div className="flex items-center gap-2">
               {/* <div className="relative">
                 <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -405,27 +405,27 @@ export function MondayDashboard() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
-              <Button1 variant="outline" size="sm">
+              <Button variant="outline" size="sm">
                 <User className="w-4 h-4 mr-1" />
                 Person
-              </Button1> */}
-              <Button1 variant="outline" size="sm">
+              </Button> */}
+              <Button variant="outline" size="sm">
                 <Filter className="w-4 h-4 mr-1" />
                 Filter
                 <ChevronDown className="w-4 h-4 ml-1" />
-              </Button1>
-              {/* <Button1 variant="outline" size="sm">
+              </Button>
+              {/* <Button variant="outline" size="sm">
                 <ArrowUpDown className="w-4 h-4 mr-1" />
                 Sort
-              </Button1>
-              <Button1 variant="outline" size="sm">
+              </Button>
+              <Button variant="outline" size="sm">
                 <Eye className="w-4 h-4 mr-1" />
                 Hide
-              </Button1>
-              <Button1 variant="outline" size="sm">
+              </Button>
+              <Button variant="outline" size="sm">
                 <Users className="w-4 h-4 mr-1" />
                 Group by
-              </Button1>
+              </Button>
               <MoreHorizontal className="w-4 h-4 text-gray-400" /> */}
             </div>
           </div>
@@ -531,7 +531,7 @@ export function MondayDashboard() {
 
         {/* Help Button */}
         {/* <div className="fixed bottom-6 right-6">
-          <Button1 className="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-12 h-12 p-0">Help</Button1>
+          <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full w-12 h-12 p-0">Help</Button>
         </div> */}
       </div>
       <Popup isVisible={isPopupVisible} onClose={() => setIsPopupVisible(false)}>
