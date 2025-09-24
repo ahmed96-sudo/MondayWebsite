@@ -32,6 +32,7 @@ import {
   Share2,
   Clock
 } from "lucide-react"
+import { MondayFilter } from "./monday-filter"
 
 interface Task {
   id: string
@@ -191,6 +192,7 @@ export function MondayDashboard() {
   // const [searchQuery, setSearchQuery] = useState("")
   const [tablesopen, setTablesopen] = useState([true, true, true]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [tasks, setTasks] = useState(mockData)
 
   const handleTaskCheck = (groupId: string, taskId: string) => {
@@ -240,6 +242,10 @@ export function MondayDashboard() {
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleFilterToggle = () => {
+    setIsFilterOpen(!isFilterOpen);
   };
 
 
@@ -419,7 +425,7 @@ export function MondayDashboard() {
                 </div>
               </div>
             )}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 relative">
               {/* <div className="relative">
                 <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <Input
@@ -433,11 +439,64 @@ export function MondayDashboard() {
                 <User className="w-4 h-4 mr-1" />
                 Person
               </Button> */}
-              <Button variant="outline" size="sm">
+              <Button onClick={handleFilterToggle} variant="outline" size="sm">
                 <Filter className="w-4 h-4 mr-1" />
                 Filter
-                <ChevronDown className="w-4 h-4 ml-1" />
+                <ChevronDown className={`w-4 h-4 ml-1 transform transition-transform duration-300 ${isFilterOpen ? 'rotate-180' : ''}`} />
               </Button>
+              {isFilterOpen && (
+                <div className="absolute left-0 top-10">
+                  <MondayFilter onClose={() => handleFilterToggle()} />
+                  {/* <div className="flex flex-row">
+                    <div className="flex flex-col items-center justify-center w-[150px]">
+                      <h4 className="text-[18px] mb-[10px]">Recent Filters</h4>
+                      <div className="h-[200px] overflow-y-auto">
+                        <div className="w-[130px] h-[30px] bg-[#F0F0F1] mb-[10px] flex flex-row justify-between items-center p-[10px]">
+                          <span>Ayman</span>
+                          <span>2</span>
+                        </div>
+                        <div className="w-[130px] h-[30px] bg-[#F0F0F1] mb-[10px] flex flex-row justify-between items-center p-[10px]">
+                          <span>Ahmed</span>
+                          <span>3</span>
+                        </div>
+                        <div className="w-[130px] h-[30px] bg-[#F0F0F1] mb-[10px] flex flex-row justify-between items-center p-[10px]">
+                          <span>Youssef</span>
+                          <span>4</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-center justify-center w-[160px] ml-[20px]">
+                      <h4 className="text-[18px] mb-[10px]">All Columns</h4>
+                      <div className="h-[200px] overflow-y-auto">
+                        <div className="w-[130px] h-[30px] bg-[#F0F0F1] mb-[10px] flex flex-row justify-between items-center p-[10px]">
+                          <span>Ayman</span>
+                          <span>2</span>
+                        </div>
+                        <div className="w-[130px] h-[30px] bg-[#F0F0F1] mb-[10px] flex flex-row justify-between items-center p-[10px]">
+                          <span>Ahmed</span>
+                          <span>3</span>
+                        </div>
+                        <div className="w-[130px] h-[30px] bg-[#F0F0F1] mb-[10px] flex flex-row justify-between items-center p-[10px]">
+                          <span>Youssef</span>
+                          <span>4</span>
+                        </div>
+                      </div>
+                    </div>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                    >
+                      New task
+                    </a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                    >
+                      New Group of Tasks
+                    </a>
+                  </div> */}
+                </div>
+              )}
               {/* <Button variant="outline" size="sm">
                 <ArrowUpDown className="w-4 h-4 mr-1" />
                 Sort
@@ -457,12 +516,12 @@ export function MondayDashboard() {
 
         {/* Table Content */}
         <div className="flex-1 overflow-auto">
-          <div className="min-w-full">
+          <div>
 
             {/* Task Groups */}
             {tasks.map((group) => (
 
-              <div key={group.id} className="border-b border-gray-200">
+              <div key={group.id} className="border-b border-gray-200 flex flex-col">
                 {/* Group Header */}
                 <div className={`border-l-4 ${getGroupHeaderColor(group.color)} bg-gray-50 px-6 py-3`}>
                   <div className="flex items-center gap-2">
