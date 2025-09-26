@@ -347,101 +347,95 @@ export function MondayDashboard() {
                 </div>
 
                 {/* Table Content */}
-                <div className="flex-1 overflow-auto">
-                    <div>
+                <div className="flex-1 w-full overflow-auto">
 
-                        {/* Task Groups */}
-                        {tasks.map((group) => (
+                    {/* Task Groups */}
+                    {tasks.map((group) => (
 
-                            <div key={group.id} className="border-b border-gray-200 flex flex-col">
-                                {/* Group Header */}
-                                <div className={`border-l-4 ${getGroupHeaderColor(group.color)} bg-gray-50 px-6 py-3`}>
-                                    <div className="flex items-center gap-2">
-                                        <ChevronDown className="w-4 h-4 text-gray-600" />
-                                        <span className="font-medium text-gray-900">{group.name}</span>
-                                    </div>
+                        <div key={group.id} className="border-b border-gray-200 flex flex-col flex-1 overflow-x-auto">
+                            {/* Group Header */}
+                            <div className={`border-l-4 ${getGroupHeaderColor(group.color)} bg-gray-50 px-6 py-3`}>
+                                <div className="flex items-center gap-2">
+                                    <ChevronDown className="w-4 h-4 text-gray-600" />
+                                    <span className="font-medium text-gray-900">{group.name}</span>
                                 </div>
-                                {/* Table Headers */}
-                                <div className="bg-gray-50 border-b border-gray-200 px-6 py-3">
-                                    <div className="grid grid-cols-12 gap-4 text-xs font-medium text-gray-500 tracking-wider border-collapse grid-flow-col">
-                                        <div className="flex items-center">
-                                            <Checkbox />
-                                        </div>
-                                        <div className="col-span-2 flex items-center gap-2">
-                                            {/* <Checkbox /> */}
-                                            Element
-                                        </div>
-                                        <div>Detaille Commande</div>
-                                        <div>OPERATEUR</div>
-                                        <div>Statut</div>
-                                        <div>Date Design</div>
-                                        <div>Sortie</div>
-                                        <div>Payement</div>
-                                        <div>Date de livraison</div>
-                                        <div>PRIX</div>
-                                        <div>AVANCE</div>
-                                        <div>N recue</div>
-                                        <div>Phone</div>
-                                        <div>Last Updated</div>
-                                        <div>
-                                            <Plus className="w-4 h-4 text-gray-400" />
-                                        </div>
+                            </div>
+                            {/* Table Headers */}
+                            <div className="bg-gray-50 border-b border-gray-200 px-6 py-3 w-[1500px] overflow-x-auto whitespace-nowrap">
+                                <div className="grid grid-cols-12 gap-4 text-xs font-medium text-gray-500 tracking-wider border-collapse">
+                                    <div className="flex items-center">
+                                        <Checkbox />
                                     </div>
-                                </div>
-
-                                {/* Group Tasks */}
-                                {group.tasks.map((task) => (
-                                    <div
-                                        key={task.id}
-                                        className={`border-l-4 ${getGroupHeaderColor(group.color)} bg-white hover:bg-gray-50`}
-                                    >
-                                        <div className="grid grid-cols-12 gap-4 px-6 py-4 items-center">
-                                            <div className="col-span-2 flex items-center gap-2">
-                                                <Checkbox checked={task.checked} onCheckedChange={() => handleTaskCheck(group.id, task.id)} />
-                                                <div className="flex items-center gap-2">
-                                                    <Settings className="w-4 h-4 text-gray-400" />
-                                                    <Calendar className="w-4 h-4 text-gray-400" />
-                                                </div>
-                                                <span className="text-sm text-gray-900">{task.name}</span>
-                                            </div>
-                                            <div>
-                                                {task.admin && (
-                                                    <Avatar className="w-6 h-6">
-                                                        <AvatarFallback className="bg-blue-500 text-white text-xs">{task.admin}</AvatarFallback>
-                                                    </Avatar>
-                                                )}
-                                            </div>
-                                            <div>{getStatusBadge(task.status)}</div>
-                                            <div className="text-sm text-gray-600">{task.echeance || ""}</div>
-                                            <div className="text-sm text-gray-600">{task.date || ""}</div>
-                                            <div className="text-sm text-gray-600">{task.date1 || ""}</div>
-                                            <div className="text-sm text-gray-600">{task.descr || ""}</div>
-                                            <div className="text-sm text-gray-600">{task.date2 || ""}</div>
-                                            <div className="text-sm text-gray-600">
-                                                {task.menuDeroulant && (
-                                                    <Badge className="bg-gray-800 text-white hover:bg-gray-800 rounded-sm">
-                                                        {task.menuDeroulant}
-                                                    </Badge>
-                                                )}
-                                            </div>
-                                            <div className="text-sm text-gray-600">
-                                                {task.statut1 && (
-                                                    <Badge className="bg-gray-800 text-white hover:bg-gray-800 rounded-sm">{task.statut1}</Badge>
-                                                )}
-                                            </div>
-                                        </div>
+                                    <div className="col-span-2 flex items-center gap-2">
+                                        {/* <Checkbox /> */}
+                                        Element
                                     </div>
-                                ))}
-
-                                {/* Add Task Row */}
-                                <div className={`border-l-4 ${getGroupHeaderColor(group.color)} bg-white`}>
-                                    <div className="px-6 py-4">
-                                        <button className="text-sm text-gray-500 hover:text-gray-700">+ Add task</button>
+                                    <div>Detaille Commande</div>
+                                    <div>OPERATEUR</div>
+                                    <div>Statut</div>
+                                    <div>Date Design</div>
+                                    <div>Sortie</div>
+                                    <div>Payement</div>
+                                    <div>Date de livraison</div>
+                                    <div>PRIX</div>
+                                    <div>AVANCE</div>
+                                    <div>N recue</div>
+                                    <div>Phone</div>
+                                    <div>Last Updated</div>
+                                    <div>
+                                        <Plus className="w-4 h-4 text-gray-400" />
                                     </div>
                                 </div>
                             </div>
-                        ))}
-                    </div>
+
+                            {/* Group Tasks */}
+                            {group.tasks.map((task) => (
+                                <div
+                                    key={task.id}
+                                    className={`border-l-4 ${getGroupHeaderColor(group.color)} bg-white hover:bg-gray-50`}
+                                >
+                                    <div className="grid grid-cols-12 gap-4 px-6 py-4 items-center">
+                                        <div className="col-span-2 flex items-center gap-2">
+                                            <Checkbox checked={task.checked} onCheckedChange={() => handleTaskCheck(group.id, task.id)} />
+                                            <span className="text-sm text-gray-900">{task.name}</span>
+                                        </div>
+                                        <div>
+                                            {task.admin && (
+                                                <Avatar className="w-6 h-6">
+                                                    <AvatarFallback className="bg-blue-500 text-white text-xs">{task.admin}</AvatarFallback>
+                                                </Avatar>
+                                            )}
+                                        </div>
+                                        <div>{getStatusBadge(task.status)}</div>
+                                        <div className="text-sm text-gray-600">{task.echeance || ""}</div>
+                                        <div className="text-sm text-gray-600">{task.date || ""}</div>
+                                        <div className="text-sm text-gray-600">{task.date1 || ""}</div>
+                                        <div className="text-sm text-gray-600">{task.descr || ""}</div>
+                                        <div className="text-sm text-gray-600">{task.date2 || ""}</div>
+                                        <div className="text-sm text-gray-600">
+                                            {task.menuDeroulant && (
+                                                <Badge className="bg-gray-800 text-white hover:bg-gray-800 rounded-sm">
+                                                    {task.menuDeroulant}
+                                                </Badge>
+                                            )}
+                                        </div>
+                                        <div className="text-sm text-gray-600">
+                                            {task.statut1 && (
+                                                <Badge className="bg-gray-800 text-white hover:bg-gray-800 rounded-sm">{task.statut1}</Badge>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+
+                            {/* Add Task Row */}
+                            <div className={`border-l-4 ${getGroupHeaderColor(group.color)} bg-white`}>
+                                <div className="px-6 py-4">
+                                    <button className="text-sm text-gray-500 hover:text-gray-700">+ Add task</button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
             <Popup isVisible={isPopupVisible} onClose={() => setIsPopupVisible(false)}>
