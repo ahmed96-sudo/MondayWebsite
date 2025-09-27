@@ -361,28 +361,28 @@ export function MondayDashboard() {
                                 </div>
                             </div>
                             {/* Table Headers */}
-                            <div className="bg-gray-50 border-b border-gray-200 px-6 py-3 w-[1500px] overflow-x-auto whitespace-nowrap">
-                                <div className="grid grid-cols-12 gap-4 text-xs font-medium text-gray-500 tracking-wider border-collapse">
-                                    <div className="flex items-center">
+                            <div className="bg-gray-50 border-b border-gray-200 px-6 py-3 w-[1600px] overflow-x-auto whitespace-nowrap flex">
+                                <div className="text-sm font-medium text-gray-500 tracking-wider flex flex-row">
+                                    <div className="flex items-center w-[30px]">
                                         <Checkbox />
                                     </div>
-                                    <div className="col-span-2 flex items-center gap-2">
+                                    <div className="w-[350px] border-r-2">
                                         {/* <Checkbox /> */}
                                         Element
                                     </div>
-                                    <div>Detaille Commande</div>
-                                    <div>OPERATEUR</div>
-                                    <div>Statut</div>
-                                    <div>Date Design</div>
-                                    <div>Sortie</div>
-                                    <div>Payement</div>
-                                    <div>Date de livraison</div>
-                                    <div>PRIX</div>
-                                    <div>AVANCE</div>
-                                    <div>N recue</div>
-                                    <div>Phone</div>
-                                    <div>Last Updated</div>
-                                    <div>
+                                    <div className="w-[250px] ml-0.5 border-r-2 flex justify-center">Detaille Commande</div>
+                                    <div className="w-[150px] ml-0.5 border-r-2 flex justify-center">Operateur</div>
+                                    <div className="w-[100px] ml-0.5 border-r-2 flex justify-center">Statut</div>
+                                    <div className="w-[200px] ml-0.5 border-r-2 flex justify-center">Date Design</div>
+                                    <div className="w-[150px] ml-0.5 border-r-2 flex justify-center">Sortie</div>
+                                    <div className="w-[150px] ml-0.5 border-r-2 flex justify-center">Payement</div>
+                                    <div className="w-[200px] ml-0.5 border-r-2 flex justify-center">Date de livraison</div>
+                                    <div className="w-[150px] ml-0.5 border-r-2 flex justify-center">Prix</div>
+                                    <div className="w-[200px] ml-0.5 border-r-2 flex justify-center">Avance</div>
+                                    <div className="w-[200px] ml-0.5 border-r-2 flex justify-center">N recue</div>
+                                    <div className="w-[200px] ml-0.5 border-r-2 flex justify-center">Phone</div>
+                                    <div className="w-[200px] ml-0.5 border-r-2 flex justify-center">Last Updated</div>
+                                    <div className="w-[100px] ml-0.5 flex justify-center">
                                         <Plus className="w-4 h-4 text-gray-400" />
                                     </div>
                                 </div>
