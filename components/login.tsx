@@ -6,8 +6,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
+    const router = useRouter(); // Initialize the router hook
     const [formData, setFormData] = useState({
             email: "",
             password: "",
@@ -17,11 +19,39 @@ const Login = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
-        setTimeout(() => {
-            alert("Login successful! Please wait while we redirect you.");
-            window.location.href = '/dashboard';
+        try {
+            // Send data to the Next.js API route
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                // Send the email and password as JSON in the request body
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (response.status == 200) {
+                // Success: Handle successful login (e.g., redirect user)
+                alert("Login successful! Please wait while we redirect you.");
+                window.location.href = '/dashboard';
+                // router.push('/dashboard');
+            } else {
+                // Error: Display the error message from the API
+                alert(`Login Failed: ${data.message || 'Invalid credentials'}`);
+            }
+        } catch (error) {
+            console.error('Submission Error:', error);
+            alert('An unexpected error occurred. Please try again.');
+        } finally {
             setIsLoading(false);
-        }, 2000);
+        }
+        // setTimeout(() => {
+        //     alert("Login successful! Please wait while we redirect you.");
+        //     window.location.href = '/dashboard';
+        //     setIsLoading(false);
+        // }, 2000);
         /* try {
             const response = await fetch('/backend/posts.php?action=login', {
                 method: 'POST',
@@ -59,7 +89,7 @@ const Login = () => {
         <div className="min-h-screen flex items-center justify-center bg-gradient-hero p-4">
             <Card className="w-full max-w-md">
                 <CardHeader className="space-y-1">
-                    <CardTitle className="text-2xl font-bold text-center">Author Login</CardTitle>
+                    <CardTitle className="text-2xl font-bold text-center">Login</CardTitle>
                     <CardDescription className="text-center">
                         Enter your credentials to access the dashboard
                     </CardDescription>
